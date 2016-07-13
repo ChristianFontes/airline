@@ -6,32 +6,33 @@ class Auth extends CI_Controller {
  public function login()
  {
    $this->load->helper('jwt_helper');
-/*
+
    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-   $objss = json_decode(file_get_contents("php://input"), true);
+	   $objss = json_decode(file_get_contents("php://input"), true);
 
-   if (isset($objss['email']) && isset($objss['password']) ) {
-    $email = $objss['email'];
-    $password = $objss['password'];
-    $this->load->model("Auth_model");
-    $user = $this->Auth_model->login($email, $password);
-    if($user !== false)
-    {
-     //ha hecho login
-     $user->iat = time();
-     $user->exp = time() + 900;
-     $jwt = JWT::encode($user, '');
-     echo json_encode(
-     array(
-     "code" => 0, 
-     "response" => array(
-     "token" => $jwt
-     )));
-    }
-   }
-}
-*/
+	   if (isset($objss['email']) && isset($objss['password']) ) {
+	    $email = $objss['email'];
+	    $password = $objss['password'];
+	    $this->load->model("Auth_model");
+	    $user = $this->Auth_model->login($email, $password);
+	    if($user !== false)
+	    {
+	     //ha hecho login
+	     $user->iat = time();
+	     $user->exp = time() + 900;
+	     $jwt = JWT::encode($user, '');
+	     echo json_encode(
+	     array(
+	     "code" => 0, 
+	     "response" => array(
+	     "token" => $jwt
+	     )));
+	    }
+	   }
+	}
+
+/*   Nota con metods de Cod igniter no trabaja
 
 	 //if($this->input->is_ajax_request())
 	 //{
