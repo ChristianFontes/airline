@@ -1,16 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+header("Content-Type: text/json");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET");
+header("Access-Control-Allow-Methods: GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding");
 
 
 class Register extends CI_Controller {
  
 	 public function index()
 	 {
-	  $this->load->helper('jwt_helper'); 
-	 	
-	   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+	  header('Content-type: text/json');
+	  $this->load->helper('jwt_helper'); 
+      $this->load->model("Register_model");
+	  $this->load->model("Auth_model");
+
+	  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		   $objss = json_decode(file_get_contents("php://input"), true);
 
@@ -28,7 +35,6 @@ class Register extends CI_Controller {
 			         $password=$objss['password'];
 
 
-			$this->load->model("Register_model");
 
 			$registro = $this->Register_model->register_client($dni,
 			 $firstName,
@@ -41,9 +47,7 @@ class Register extends CI_Controller {
 			        $email,
 			         $password);
 
-			if($registro){
-			    
-			    $this->load->model("Auth_model");
+			if($registro==1){
 
 			    $user = $this->Auth_model->login($email, $password);
 			    if($user !== false)
@@ -62,9 +66,8 @@ class Register extends CI_Controller {
 			}else{
 				//algo aca si es falso
 			}
-
-		}
 	 }
+	}
 }
 
 

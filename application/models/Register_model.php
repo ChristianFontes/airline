@@ -30,7 +30,7 @@ class Register_model extends CI_Model
 			    'codigoPostal' => $zipcode,
 			    'Telefono' => $phone,
 			    'Celular' => $cellPhone,
-		            'email' => $email,
+		        'email' => $email,
 			    'clave' => $password
 		);
 
@@ -38,8 +38,6 @@ class Register_model extends CI_Model
 		 // Procesos Ejemplo: INSERT INTO mytable (title, name, date) VALUES ('{$title}', '{$name}', '{$date}')
 
 		return $this->db->affected_rows();
-
-
 	 }
 	 
 	
