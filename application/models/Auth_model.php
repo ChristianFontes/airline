@@ -22,6 +22,21 @@ class Auth_model extends CI_Model
 		 }
 		 return false;
 	 }
+
+	  public function login_admin($email, $clave)
+	 {
+	 	$this->load->database();
+		 $query = $this->db->select("email, privilegios")
+		 ->from("administradores")
+		 ->where("email", $email)
+		 ->where("clave", $clave)
+		 ->get();
+		 if($query->num_rows() === 1)
+		 {
+		 	return $query->row();
+		 }
+		 return false;
+	 }
 	 
 	 public function checkUser($id, $email)
 	 {

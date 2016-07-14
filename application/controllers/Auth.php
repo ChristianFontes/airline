@@ -1,22 +1,40 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+header("Content-Type: text/json");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET");
+header("Access-Control-Allow-Methods: GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding");
 
 class Auth extends CI_Controller {
  
  public function login()
  {
    $this->load->helper('jwt_helper');
+   $this->load->model("Auth_model");
+
+
 
    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	   $objss = json_decode(file_get_contents("php://input"), true);
 
-	   if (isset($objss['email']) && isset($objss['password']) ) {
+	  // $objss['toggle']  //  0  1
+
+	   if (isset($objss['email']) && isset($objss['password'])  ) {
 	    $email = $objss['email'];
 	    $password = $objss['password'];
-	    $this->load->model("Auth_model");
 
-	    $user = $this->Auth_model->login($email, $password);
+	    $privilegio="";
+
+	    if($objss['toggle']==0){
+ 			$user = $this->Auth_model->login($email, $password);
+ 			$privilegio=0;		
+	    }
+	    else if($objss['toggle']==1){
+	    	$user = $this->Auth_model->login_admin($email, $password);		
+	    	$privilegio=$user->privilegios;
+	    }
 	    if($user !== false)
 	    {
 	     //ha hecho login
@@ -27,9 +45,12 @@ class Auth extends CI_Controller {
 	     array(
 	     "code" => 0, 
 	     "response" => array(
-	     "token" => $jwt
+	     "token" => $jwt,
+	     "privilegio" => $privilegio
 	     )));
 	    }
+
+
 	   }
 	}
 

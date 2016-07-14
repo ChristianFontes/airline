@@ -60,7 +60,8 @@ class Register extends CI_Controller {
 				     array(
 				     "code" => 0, 
 				     "response" => array(
-				     "token" => $jwt
+				     "token" => $jwt,
+				     "privilegio" => 0
 				     )));
 	  			  }
 			}else{
