@@ -15,6 +15,7 @@ class Auth extends CI_Controller {
 	    $email = $objss['email'];
 	    $password = $objss['password'];
 	    $this->load->model("Auth_model");
+
 	    $user = $this->Auth_model->login($email, $password);
 	    if($user !== false)
 	    {

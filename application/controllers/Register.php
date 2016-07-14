@@ -11,9 +11,12 @@ class Register extends CI_Controller {
  
 	 public function index()
 	 {
-	  // $this->load->helper('jwt_helper');
+	  // $this->load->helper('jwt_helper'); 
+	 	
+
 
 	   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
 
 		   $objss = json_decode(file_get_contents("php://input"), true);
 
@@ -45,7 +48,22 @@ class Register extends CI_Controller {
 			         $password);
 
 			if($registro){
-				//algo aca si esverdad
+				$this->load->model("Auth_model");
+
+			    $user = $this->Auth_model->login($email, $password);
+			    if($user !== false)
+			    {
+			    	 //ha hecho login
+				     $user->iat = time();
+				     $user->exp = time() + 900;
+				     $jwt = JWT::encode($user, '');
+				     echo json_encode(
+				     array(
+				     "code" => 0, 
+				     "response" => array(
+				     "token" => $jwt
+				     )));
+	  			  }
 			}else{
 				//algo aca si es falso
 			}
