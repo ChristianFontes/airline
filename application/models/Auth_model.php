@@ -8,13 +8,13 @@ class Auth_model extends CI_Model
 		 parent::__construct();
 	 }
 	 
-	 public function login($email, $password)
+	 public function login($email, $clave)
 	 {
 	 	$this->load->database();
 		 $query = $this->db->select("id, email")
-		 ->from("user")
+		 ->from("clienteLealtad")
 		 ->where("email", $email)
-		 ->where("pass", $password)
+		 ->where("clave", $clave)
 		 ->get();
 		 if($query->num_rows() === 1)
 		 {
