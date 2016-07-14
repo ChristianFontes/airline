@@ -22,18 +22,18 @@ class Auth_model extends CI_Model
 	 	$this->load->database(); //Te permite utilizar la Base de datos
 
 		$data = array(
-		        'title' => $firstName,
-			    'title' => $lastName,
-			    'title' => $streetAddressss,
-			    'title' => $state,
-			    'title' => $zipcode,
-			    'title' => $phone,
-			    'title' => $cellPhone,
-		        'title' => $email,
-			    'title' => $password
+		            'nombre' => $firstName,
+			    'apellido' => $lastName,
+			    'direccion' => $streetAddressss,
+			    'estado' => $state,
+			    'codigoPostal' => $zipcode,
+			    'Telefono' => $phone,
+			    'Celular' => $cellPhone,
+		            'email' => $email,
+			    'clave' => $password
 		);
 
-		$this->db->insert('mytable', $data);
+		$this->db->insert('clienteLealtad', $data);
 		 // Procesos Ejemplo: INSERT INTO mytable (title, name, date) VALUES ('{$title}', '{$name}', '{$date}')
 
 		return $this->db->affected_rows();
