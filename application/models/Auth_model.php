@@ -11,7 +11,7 @@ class Auth_model extends CI_Model
 	 public function login($email, $clave)
 	 {
 	 	$this->load->database();
-		 $query = $this->db->select("id, email")
+		 $query = $this->db->select("cedula, email")
 		 ->from("clienteLealtad")
 		 ->where("email", $email)
 		 ->where("clave", $clave)
@@ -26,7 +26,7 @@ class Auth_model extends CI_Model
 	 public function checkUser($id, $email)
 	 {
 	 	$this->load->database();
-		 $query = $this->db->limit(1)->get_where("user", array("id" => $id, "email" => $email));
+		 $query = $this->db->limit(1)->get_where("user", array("cedula" => $id, "email" => $email));
 		 return $query->num_rows() === 1;
 	 }
 }

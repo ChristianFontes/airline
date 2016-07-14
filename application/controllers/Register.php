@@ -1,20 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-header('Content-type: application/json');
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET");
-header("Access-Control-Allow-Methods: GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding");
+
 
 
 class Register extends CI_Controller {
  
 	 public function index()
 	 {
-	  // $this->load->helper('jwt_helper'); 
+	  $this->load->helper('jwt_helper'); 
 	 	
-
-
 	   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
@@ -48,7 +42,8 @@ class Register extends CI_Controller {
 			         $password);
 
 			if($registro){
-				$this->load->model("Auth_model");
+			    
+			    $this->load->model("Auth_model");
 
 			    $user = $this->Auth_model->login($email, $password);
 			    if($user !== false)

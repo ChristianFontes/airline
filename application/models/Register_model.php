@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth_model extends CI_Model 
+class Register_model extends CI_Model 
 {
 	 public function __construct()
 	 {
@@ -22,7 +22,8 @@ class Auth_model extends CI_Model
 	 	$this->load->database(); //Te permite utilizar la Base de datos
 
 		$data = array(
-		            'nombre' => $firstName,
+		        'cedula' => $dni,
+		        'nombre' => $firstName,
 			    'apellido' => $lastName,
 			    'direccion' => $streetAddressss,
 			    'estado' => $state,
