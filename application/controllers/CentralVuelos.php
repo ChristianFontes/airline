@@ -11,10 +11,99 @@ class CentralVuelos extends CI_Controller {
 	public function index()
 	 {
       $this->load->model("CentralVuelos_model");
+	  $registro = $this->CentralVuelos_model->todo_vuelo();
 
-	$registro = $this->CentralVuelos_model->todo_vuelo();
+	  echo json_encode($registro->result());
+	 }
 
-	echo json_encode($registro->result());
+	 public function insert(){
+		$this->load->model("CentralVuelos_model");
+
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+		   $objss = json_decode(file_get_contents("php://input"), true);
+
+			//$numVuelo=$objss['numVuelo'];
+			 $salida=$objss['salida'];
+			  $destino=$objss['destino'];
+			   $sector=$objss['sector'];
+			    $tiempoVuelo=$objss['tiempoVuelo'];
+			     $modeloAvion=$objss['modeloAvion'];
+			      $codigoTripulacion=$objss['codigoTripulacion'];
+			       $disponible=$objss['disponible'];
+
+			 $registro = $this->CentralVuelos_model->insert_vuelo(
+			 $salida,
+			  $destino,
+			   $sector,
+			    $tiempoVuelo,
+			     $modeloAvion,
+			      $codigoTripulacion,
+			       $disponible);
+
+			 if($registro==1){
+			 	//registro completo
+			 }else{
+			 	//si no hay nada
+			 }
+		}
+
+
+	 }
+
+	 public function update(){
+	 	$this->load->model("CentralVuelos_model");
+
+	 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+		   $objss = json_decode(file_get_contents("php://input"), true);
+
+			$numVuelo=$objss['numVuelo'];
+			 $salida=$objss['salida'];
+			  $destino=$objss['destino'];
+			   $sector=$objss['sector'];
+			    $tiempoVuelo=$objss['tiempoVuelo'];
+			     $modeloAvion=$objss['modeloAvion'];
+			      $codigoTripulacion=$objss['codigoTripulacion'];
+			       $disponible=$objss['disponible'];
+
+			 $registro = $this->CentralVuelos_model->update_vuelo(
+			 $numVuelo,
+			 $salida,
+			  $destino,
+			   $sector,
+			    $tiempoVuelo,
+			     $modeloAvion,
+			      $codigoTripulacion,
+			       $disponible);
+
+			 if($registro==1){
+			 	//registro completo
+			 }else{
+			 	//si no hay nada
+			 }
+		}
+	 }
+
+	 public function delete(){
+	 	$this->load->model("CentralVuelos_model");
+
+	 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+		   $objss = json_decode(file_get_contents("php://input"), true);
+
+			$numVuelo=$objss['numVuelo'];
+			 $registro = $this->CentralVuelos_model->delete_vuelo(
+			 $numVuelo);
+
+			  if($registro==1){
+			 	//registro borrado
+			 }else{
+			 	//error
+			 }
+
+		}
+	 
 	 }
 
 
