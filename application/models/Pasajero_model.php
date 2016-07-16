@@ -27,7 +27,8 @@ class Pasajero_model extends CI_Model
 		$clase,
 		$numEquipaje,
 		$pesoEquipaje,
-		$numVuelo)
+		$numVuelo,
+		$sexo)
 	  {
 
 	  	$this->load->database(); //Te permite utilizar la Base de datos
@@ -42,7 +43,8 @@ class Pasajero_model extends CI_Model
 			    'clase' => $clase,
    			    'numEquipaje' => $numEquipaje,
    			    'pesoEquipaje' => $pesoEquipaje,
-   			    'numVuelo' => $numVuelo
+   			    'numVuelo' => $numVuelo,
+   			    'sexo' => $sexo
 
 		);
 
@@ -55,6 +57,7 @@ class Pasajero_model extends CI_Model
 	  }
 
 	   public function update_pasajero( 
+	   	$id,
 	  	 	$cedula,
 		$nombre,
 		$apellido,
@@ -64,12 +67,14 @@ class Pasajero_model extends CI_Model
 		$clase,
 		$numEquipaje,
 		$pesoEquipaje,
-		$numVuelo)
+		$numVuelo,
+		$sexo)
 	  {
 
 	  	$this->load->database(); //Te permite utilizar la Base de datos
 
 		$data = array(
+			'cedula' => $cedula,
 		        'nombre' => $nombre,
 			    'apellido' => $apellido,
 			    'email' => $email,
@@ -78,11 +83,12 @@ class Pasajero_model extends CI_Model
 			    'clase' => $clase,
    			    'numEquipaje' => $numEquipaje,
    			    'pesoEquipaje' => $pesoEquipaje,
-   			    'numVuelo' => $numVuelo
+   			    'numVuelo' => $numVuelo,
+   			    'sexo' => $sexo
 
 		);
 
-		$this->db->where('cedula', $cedula);
+		$this->db->where('id', $id);
 		$this->db->update('pasajeroVuelo', $data);
 
 		return $this->db->update_batch();
@@ -91,11 +97,11 @@ class Pasajero_model extends CI_Model
 
 	  }
 
-	  public function delete_pasajero($cedula){
+	  public function delete_pasajero($id){
 
 	$this->load->database(); 
 
-	  	$this->db->where('cedula', $cedula);
+	  	$this->db->where('id', $id);
 		$this->db->delete('pasajeroVuelo');
 
 		return 1;

@@ -79,7 +79,7 @@ class Tripulacion_trabajador_model extends CI_Model
 	$this->load->database(); 
 
 	  	$this->db->where('codigoPersonal', $codigoPersonal);
-		$this->db->delete('tripulacion');
+		$this->db->delete('trabajadoresTripulacion');
 
 		return 1;
 

@@ -106,7 +106,6 @@ class CentralVuelos extends CI_Controller {
 	 
 	 }
 
-
 /*
 numVuelo INT PRIMARY KEY,
   	salida varchar(255) NOT NULL default '',
@@ -119,7 +118,10 @@ numVuelo INT PRIMARY KEY,
 
 INSERT INTO centralVuelos (numVuelo,salida,destino,sector,tiempoVuelo,modeloAvion,codigoTripulacion,disponible)
 VALUES (1,'Maiquetia','NewYork','America','12:30:00','Boing774',411,'Disponible'),
-(2,'Maiquetia','Berling','Europa','12:15:00','Boing884',401,'Disponible');*/
+(2,'Maiquetia','Berling','Europa','12:15:00','Boing884',401,'Disponible'),
+(3,'Maiquetia','Tibuk','Africa','12:30:00','Boing774',421,'Disponible'),
+(4,'Maiquetia','Tokyo','Asia','12:15:00','Boing894',404,'Disponible'),
+(5,'Maiquetia','Cuba','Caribe','12:02:00','Boing662',433,'Disponible');*/
 
 
 }
