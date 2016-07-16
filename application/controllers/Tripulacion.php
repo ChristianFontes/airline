@@ -33,7 +33,6 @@ class Tripulacion extends CI_Controller {
 
 
 			 $registro = $this->Tripulacion_model->insert_tripu(
-			 $objss['codigoTripulacion'],
 			  $objss['numTripulantes'],
 			   $objss['idiomaTripulacion']
 			 );
@@ -100,7 +99,6 @@ class Tripulacion extends CI_Controller {
 
 
 			 $registro = $this->Tripulacion_trabajador_model->insert_trab(
-			 $objss['codigoPersonal'],
 			  $objss['codigoTripulacion'],
 			   $objss['nombre'],
 			   $objss['apellido'],

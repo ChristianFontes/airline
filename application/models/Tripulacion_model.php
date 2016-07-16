@@ -17,7 +17,6 @@ class Tripulacion_model extends CI_Model
 	  }
 
 	   public function insert_tripu( 
-	  	$codigoTripulacion,
 		$numTripulantes,
 		$idiomaTripulacion)
 	  {
@@ -25,7 +24,6 @@ class Tripulacion_model extends CI_Model
 	  	$this->load->database(); //Te permite utilizar la Base de datos
 
 		$data = array(
-		        'codigoTripulacion' => $codigoTripulacion,
 		        'numTripulantes' => $numTripulantes,
 			    'idiomaTripulacion' => $idiomaTripulacion
 		);
@@ -72,3 +70,5 @@ class Tripulacion_model extends CI_Model
 	  }
 
 }
+
+/* fin tripulacion_modelo.php*/

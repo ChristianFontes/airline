@@ -17,7 +17,6 @@ class Tripulacion_trabajador_model extends CI_Model
 	  }
 
 	   public function insert_trab( 
-	  	$codigoPersonal,
 		$codigoTripulacion,
 		$nombre,
 		$apellido,
@@ -29,7 +28,6 @@ class Tripulacion_trabajador_model extends CI_Model
 	  	$this->load->database(); //Te permite utilizar la Base de datos
 
 		$data = array(
-		        'codigoPersonal' => $codigoPersonal,
 		        'codigoTripulacion' => $codigoTripulacion,
 			    'nombre' => $nombre,
 			    'apellido' => $apellido,
