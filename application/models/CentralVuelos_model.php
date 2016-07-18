@@ -32,7 +32,7 @@ class CentralVuelos_model extends CI_Model
 		        'salida' => $salida,
 		        'destino' => $destino,
 			    'sector' => $sector,
-			    'tiempoVuelo' => $streetAddressss,
+			    'tiempoVuelo' => $tiempoVuelo,
 			    'modeloAvion' => $modeloAvion,
 			    'codigoTripulacion' => $codigoTripulacion,
 			    'disponible' => $disponible
@@ -63,7 +63,7 @@ class CentralVuelos_model extends CI_Model
 		        'salida' => $salida,
 		        'destino' => $destino,
 			    'sector' => $sector,
-			    'tiempoVuelo' => $streetAddressss,
+			    'tiempoVuelo' => $tiempoVuelo,
 			    'modeloAvion' => $modeloAvion,
 			    'codigoTripulacion' => $codigoTripulacion,
 			    'disponible' => $disponible
