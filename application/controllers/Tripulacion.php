@@ -75,8 +75,7 @@ class Tripulacion extends CI_Controller {
 		   $objss = json_decode(file_get_contents("php://input"), true);
 
 			$codigoTripulacion=$objss['codigoTripulacion'];
-			 $registro = $this->Tripulacion_model->delete_tripu(
-			 $codigoTripulacion);
+			
 
 			 $checkVuelo =$this->Tripulacion_model->check_vuelo($codigoTripulacion);
 			$chequeoV = $checkVuelo->first_row();
@@ -85,6 +84,8 @@ class Tripulacion extends CI_Controller {
 			$chequeoTT = $checkTrabajadorT->first_row();
 
 			  if($chequeoV->conteoVuelos==0 && $chequeoTT->conteoTrabajadores==0 ){
+			  	 $registro = $this->Tripulacion_model->delete_tripu(
+			 $codigoTripulacion);
 			 	echo json_encode(Array("borrar"=>1) );
 			 }else{
 			 	echo json_encode(Array("borrar"=>0) );

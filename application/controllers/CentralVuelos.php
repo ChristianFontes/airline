@@ -93,11 +93,11 @@ class CentralVuelos extends CI_Controller {
 		   $objss = json_decode(file_get_contents("php://input"), true);
 
 			$numVuelo=$objss['numVuelo'];
-			 $registro = $this->CentralVuelos_model->delete_vuelo($numVuelo);
 			$checkVuelo =$this->CentralVuelos_model->check_vuelo($numVuelo);
 			$chequeo = $checkVuelo->first_row();
 
 			  if($chequeo->conteoPasajero==0){
+			  	$registro = $this->CentralVuelos_model->delete_vuelo($numVuelo);
 			 	echo json_encode(Array("borrar"=>1) );
 			 }else{
 			 	echo json_encode(Array("borrar"=>0) );
