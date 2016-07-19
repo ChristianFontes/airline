@@ -69,6 +69,34 @@ class Tripulacion_model extends CI_Model
 
 	  }
 
+	    public function check_vuelo($codigoTripulacion){
+
+		$this->load->database(); 
+
+		$query = $this->db->query('
+
+		  		SELECT COUNT(*) AS conteoVuelos FROM centralVuelos WHERE codigoTripulacion = '.$codigoTripulacion
+		  		);
+
+
+		return $query;
+
+	  }
+
+	  public function check_trabajadores($codigoTripulacion){
+
+		$this->load->database(); 
+
+		$query = $this->db->query('
+
+		  		SELECT COUNT(*) AS conteoTrabajadores FROM trabajadoresTripulacion WHERE codigoTripulacion = '.$codigoTripulacion
+		  		);
+
+
+		return $query;
+
+	  }
+
 }
 
 /* fin tripulacion_modelo.php*/

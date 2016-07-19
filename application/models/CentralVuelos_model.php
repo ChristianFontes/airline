@@ -89,6 +89,20 @@ class CentralVuelos_model extends CI_Model
 
 	  }
 
+	  public function check_vuelo($numVuelo){
+
+	$this->load->database(); 
+
+	$query = $this->db->query('
+
+		  		SELECT COUNT(*) AS conteoPasajero FROM pasajeroVuelo WHERE numVuelo = '.$numVuelo
+		  		);
+
+
+		return $query;
+
+	  }
+
 
 }
 

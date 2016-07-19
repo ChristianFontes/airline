@@ -78,10 +78,16 @@ class Tripulacion extends CI_Controller {
 			 $registro = $this->Tripulacion_model->delete_tripu(
 			 $codigoTripulacion);
 
-			  if($registro==1){
-			 	//registro borrado
+			 $checkVuelo =$this->Tripulacion_model->check_vuelo($codigoTripulacion);
+			$chequeoV = $checkVuelo->first_row();
+
+			$checkTrabajadorT =$this->Tripulacion_model->check_trabajadores($codigoTripulacion);
+			$chequeoTT = $checkTrabajadorT->first_row();
+
+			  if($chequeoV->conteoVuelos==0 && $chequeoTT->conteoTrabajadores==0 ){
+			 	echo json_encode(Array("borrar"=>1) );
 			 }else{
-			 	//error
+			 	echo json_encode(Array("borrar"=>0) );
 			 }
 
 		}
